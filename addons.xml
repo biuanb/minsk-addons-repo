@@ -20,10 +20,6 @@
 			<screenshot>resources/screenshot-03.jpg</screenshot>
 			<screenshot>resources/screenshot-04.jpg</screenshot>
 			<screenshot>resources/screenshot-05.jpg</screenshot>
-			<screenshot>resources/screenshot-06.jpg</screenshot>
-			<screenshot>resources/screenshot-07.jpg</screenshot>
-			<screenshot>resources/screenshot-08.jpg</screenshot>
-			<screenshot>resources/screenshot-09.jpg</screenshot>
 		</assets>
 		<news>Omega update.</news>
 		<summary lang="zh_CN">明斯克改进的 Confluence 皮肤。</summary>
@@ -33,7 +29,7 @@
 		
 	</extension>
 </addon>
-<addon id="skin.confluence.minsk" version="5.1.1" name="Confluence-明斯克" provider-name="Minsk, CE使用交流群">
+<addon id="skin.confluence.minsk" version="2025.8.2" name="Confluence-明斯克" provider-name="Minsk, CE使用交流群">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 	</requires>
@@ -53,10 +49,6 @@
 			<screenshot>resources/screenshot-03.jpg</screenshot>
 			<screenshot>resources/screenshot-04.jpg</screenshot>
 			<screenshot>resources/screenshot-05.jpg</screenshot>
-			<screenshot>resources/screenshot-06.jpg</screenshot>
-			<screenshot>resources/screenshot-07.jpg</screenshot>
-			<screenshot>resources/screenshot-08.jpg</screenshot>
-			<screenshot>resources/screenshot-09.jpg</screenshot>
 		</assets>
 		<news>Omega update.</news>
 		<summary lang="zh_CN">明斯克改进的 Confluence 皮肤。</summary>
@@ -65,5 +57,30 @@
 主要功能集成了地平线风格海报墙，三行八列海报展示，光盘入盒滚动动画(可设置关闭)，剧集列表，播放页面可选剧集(书签)，播放页面加载剧情详情页和演员列表详情页，快捷选择字幕和音轨以及各种美化，更多细节欢迎各位喜爱KODI和CE的朋友深入体验。</description>
 		
 	</extension>
+</addon>
+<addon id="repository.minsk-addons"
+        name="明斯克的插件仓库"
+         version="1.0"
+        provider-name="CE-minsk">
+    <extension point="xbmc.addon.repository"
+            name="minsk-addons-repo">
+          <dir minversion="19.0.0">
+            <info compressed="true">https://github.com/biuanb/minsk-addons-repo/raw/matrix/addons.xml</info>
+            <checksum>https://github.com/biuanb/minsk-addons-repo/raw/matrix/addons.xml.md5</checksum>
+            <datadir zip="true">https://github.com/biuanb/minsk-addons-repo/raw/matrix/repo</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>repository.minsk-addons-repo</summary>
+        <summary lang="zh">明斯克的插件仓库</summary>
+        <description>CE玩家明斯克的插件仓库，包含魔改皮肤及一些依赖插件。</description>
+        <description lang="zh">CE玩家明斯克的插件仓库，包含魔改皮肤及一些依赖插件。</description>
+        <disclaimer>本库中魔改皮肤由明斯克开发，转载请注明出处。</disclaimer>
+        <disclaimer lang="zh">本库中魔改皮肤由明斯克开发，转载请注明出处。</disclaimer>
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
 </addon>
 </addons>
