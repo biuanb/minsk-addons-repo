@@ -28,8 +28,9 @@
 		<news>Omega update.</news>
 		<summary lang="zh_CN">明斯克改进的 Confluence 皮肤。</summary>
 		<summary lang="zh_TW">明斯克改进的面板 (Kodi 的預設面板)。</summary>
-		<description lang="zh_CN">Confluence 集合了许多流行皮肤的创意，力求把这些优点融合到一个皮肤中，使得首次[CR]使用 Kodi 的用户能更容易上手。</description>
-		<description lang="zh_TW">Confluence 是從 Kodi 9.11 開始預設的面板。它結合了許多受歡迎面板的概念，且試圖包含並整合它們的優點，使第一次使用 Kodi 的使用者可以簡單地上手。</description>
+		<description lang="zh_CN">本皮肤由CE交流群-明斯克基于Confluence皮肤深度优化打造，在保持流畅运行的前提下融合了多款流行皮肤的精华功能，并加入多项创新设计，致力于为CE爱好者提供极致的视觉体验与操作便利。
+主要功能集成了地平线风格海报墙，三行八列海报展示，光盘入盒滚动动画(可设置关闭)，剧集列表，播放页面可选剧集(书签)，播放页面加载剧情详情页和演员列表详情页，快捷选择字幕和音轨以及各种美化，更多细节欢迎各位喜爱KODI和CE的朋友深入体验。</description>
+		
 	</extension>
 </addon>
 </addons>
