@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="1114" type="dialog">
+	<defaultcontrol always="true">11000</defaultcontrol>
+	<onload condition="String.IsEqual(window(home).Property(optionsdialog_content),options)">SetFocus(11100)</onload>
+	<onload condition="String.IsEqual(window(home).Property(optionsdialog_content),3d)">SetFocus(11200)</onload>
+	<include>dialogeffect</include>
+	<onunload>ClearProperty(optionsdialog_header,Home)</onunload>
+	<onunload>ClearProperty(optionsdialog_content,Home)</onunload>
+	<coordinates>
+		<left>360</left>
+		<top>110</top>
+	</coordinates>
+	<controls>
+		<control type="group" id="11000">
+			<centerleft>50%</centerleft>
+			<centertop>170</centertop>
+			<animation effect="fade" time="150">VisibleChange</animation>
+			<include content="DialogBackgroundCommons">
+				<param name="DialogBackgroundWidth" value="1200" />
+				<param name="DialogBackgroundHeight" value="450" />
+				<param name="DialogHeaderWidth" value="1160" />
+				<param name="DialogHeaderLabel" value="$INFO[Window(home).Property(optionsdialog_header)]" />
+				<param name="DialogHeaderId" value="1" />
+				<param name="CloseButtonLeft" value="1065" />
+				<param name="CloseButtonNav" value="10" />
+			</include>
+			<control type="grouplist" id="11100">
+				<visible>String.IsEqual(window(home).Property(optionsdialog_content),options)</visible>
+				<animation effect="fade" time="150">VisibleChange</animation>
+				<left>53</left>
+				<top>105</top>
+				<width>1095</width>
+				<height>270</height>
+				<itemgap>6</itemgap>
+				<onleft>11100</onleft>
+				<onright>11100</onright>
+				<onup>11100</onup>
+				<ondown>11100</ondown>
+				<orientation>vertical</orientation>
+				<control type="button" id="1110200">
+					<height>60</height>
+					<width>1095</width>
+					<label>VS10 Original</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.original)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<!--onclick>Close</onclick-->
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110201">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; SDR</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.sdr)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),HDR10) | String.Contains(Player.Process(video.source.hdr.type),Dolby Vision) | String.Contains(Player.Process(video.source.hdr.type),HLG)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110202">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; HDR10</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.hdr10)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),SDR) | String.Contains(Player.Process(video.source.hdr.type),Dolby Vision)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110203">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; Dolby Vision</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.dv)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),SDR) | String.Contains(Player.Process(video.source.hdr.type),HDR10) | String.Contains(Player.Process(video.source.hdr.type),HLG)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="11101">
+					<height>60</height>
+					<width>1095</width>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<label>31022</label>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(1115)</onclick>
+					<enable>Player.TempoEnabled</enable>
+				</control>
+
+				<control type="button" id="11102">
+					<height>60</height>
+					<width>1095</width>
+					<label>10116</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Dialog.Close(all)</onclick>
+					<onclick>ActivateWindow(playerprocessinfo)</onclick>
+					<onclick>SetFocus(207)</onclick>
+				</control>
+				<control type="button" id="11103">
+					<height>60</height>
+					<width>1095</width>
+					<label>36560</label>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Dialog.Close(1114)</onclick>
+					<onclick>ActivateWindow(osdcmssettings)</onclick>
+					<visible>System.HasCMS</visible>
+				</control>
+			</control>
+			<control type="grouplist" id="11200">
+				<visible>String.IsEqual(window(home).Property(optionsdialog_content),3d)</visible>
+				<animation effect="fade" time="150">VisibleChange</animation>
+				<left>53</left>
+				<top>105</top>
+				<width>1095</width>
+				<height>192</height>
+				<itemgap>6</itemgap>
+				<onleft>11200</onleft>
+				<onright>11200</onright>
+				<onup>11200</onup>
+				<ondown>11200</ondown>
+				<orientation>vertical</orientation>
+				<control type="radiobutton" id="11201">
+					<height>60</height>
+					<width>1095</width>
+					<aligny>center</aligny>
+					<label>31362</label>
+					<radioposx>1040</radioposx>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>ToggleStereoMode</onclick>
+					<selected>Integer.IsGreater(System.StereoscopicMode,0)</selected>
+				</control>
+				<control type="button" id="11202">
+					<height>60</height>
+					<width>1095</width>
+					<aligny>center</aligny>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<label>31361</label>
+					<label2>[B]$INFO[VideoPlayer.StereoscopicMode][/B]</label2>
+					<onclick>StereoMode</onclick>
+				</control>
+				<control type="radiobutton" id="11203">
+					<height>60</height>
+					<width>1095</width>
+					<aligny>center</aligny>
+					<label>31360</label>
+					<radioposx>1040</radioposx>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>StereoModeToMono</onclick>
+					<selected>String.IsEqual(System.StereoscopicMode,9)</selected>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
+

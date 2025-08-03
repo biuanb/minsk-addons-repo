@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">100</defaultcontrol>
+	<onload condition="!VideoPlayer.Content(LiveTV)">SetFocus(105)</onload>
+	<include>dialogeffect</include>
+	<depth>DepthOSD</depth>
+	<coordinates>
+		<left>0</left>
+		<top>0</top>
+	</coordinates>
+	<controls>
+	
+	 <!-- Large logos OSD -->
+				<control type="group" description="logos">
+								<top>5</top>
+								<left>1624</left>
+								<width>330</width>
+								<height>240</height>
+								<visible>!Skin.HasSetting(ShowBigLogosOSD)</visible>
+                                <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+                                <visible>!Player.Caching | !Player.Seeking | !Player.DisplayAfterSeek</visible>
+								<aspectratio aligny="bottom">keep</aspectratio>
+								<animation effect="fade" start="0" end="100" delay="100" time="200">Visible</animation>
+								<control type="image">
+									<texture>codecs/cdbg.png</texture>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 0) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/SDR.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 1) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/HDR10.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 2) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/HDR10Plus.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 3) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFc4ddf0">codecs/HDR10.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 4) + String.Contains(Player.Process(amlogic.vs10.mode),Bypass)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/HLG.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.Contains(Player.Process(amlogic.vs10.mode),SDR)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/SDR.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.Contains(Player.Process(amlogic.vs10.mode),HDR10)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/HDR10.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 2) + !String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFD3E3EF">codecs/HDR10Plus.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(Player.Process(video.source.hdr.type.raw), 2) + String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFcebc86">codecs/Dolby_Vision.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.Contains(Player.Process(amlogic.vs10.mode),Dolby Vision)</visible>
+									<top>80</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFcebc86">codecs/Dolby_Vision.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,pcm) | String.IsEqual(VideoPlayer.AudioCodec,pcm_bluray) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s16le) | String.IsEqual(VideoPlayer.AudioCodec,pcm_s24le)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/PCM.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dolbydigital) | String.IsEqual(VideoPlayer.AudioCodec,ac3)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/Dolby_Digital.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,eac3) + !String.Contains(VideoPlayer.AudioCodec,eac3_ddp_atmos)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/Dolby_Digital_Plus.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>!String.IsEqual(VideoPlayer.AudioCodec,eac3) + String.IsEqual(VideoPlayer.AudioCodec,eac3_ddp_atmos)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/Dolby_Digital_Plus_Atmos.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,truehd) + !String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos) + !String.Contains(Player.Process(audio.is.dolby.atmos),Atmos)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/Dolby_TrueHD.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,truehd_atmos) | [String.IsEqual(VideoPlayer.AudioCodec,truehd) + String.Contains(Player.Process(audio.is.dolby.atmos),Atmos)]</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFcebc86">codecs/Dolby_Atmos.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,mp3) | String.IsEqual(VideoPlayer.AudioCodec,mp3float)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/MP3.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dca)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/DTS.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma) + !String.Contains(Player.Process(audio.dts.x.type), DTS) + !String.Contains(Player.Process(audio.dts.x.type), IMAX)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/DTS-HD-MA.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_hra) + !String.Contains(Player.Process(audio.dts.x.type), DTS) + !String.Contains(Player.Process(audio.dts.x.type), IMAX)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/DTS-HD-HRA.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x) | [String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma) + String.Contains(Player.Process(audio.dts.x.type), DTS)]</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFcebc86">codecs/DTSX.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma_x_imax) | [String.IsEqual(VideoPlayer.AudioCodec,dtshd_ma) + String.Contains(Player.Process(audio.dts.x.type), IMAX)]</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFcebc86">codecs/IMAX.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,aac)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/AAC.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,flac)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/FLAC.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,aif)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/AIFF.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,alac)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/ALAC.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,ape)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/APE.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,cdda)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/CDDA.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,ogg)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/OGG.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,vorbis)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/VORBIS.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,wavpack)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/WAVP.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,wma) | String.IsEqual(VideoPlayer.AudioCodec,wmav2) | String.IsEqual(VideoPlayer.AudioCodec,wmapro)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/WMA.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,cook)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/COOK.png</texture>
+									</control>
+								</control>
+								<control type="group">
+									<visible>String.IsEqual(VideoPlayer.AudioCodec,opus)</visible>
+									<top>170</top>
+									<left>90</left>
+									<control type="image">
+										<width>150</width>
+										<height>56</height>
+										<texture colordiffuse="FFf0e8c4">codecs/OPUS.png</texture>
+									</control>
+								</control>
+                            </control>
+	
+		<control type="button">
+			<description>Close Window button</description>
+			<left>126r</left>
+			<top>0</top>
+			<width>96</width>
+			<height>48</height>
+			<label />
+			<font />
+			<onclick>Dialog.Close(VideoOSD,true)</onclick>
+			<onclick>FullScreen</onclick>
+			<texturefocus>DialogCloseButton-focus.png</texturefocus>
+			<texturenofocus>DialogCloseButton.png</texturenofocus>
+			<animation effect="slide" start="0,0" end="-45,0" time="0" condition="Player.Muted">conditional</animation>
+			<animation effect="fade" time="150">VisibleChange</animation>
+			<visible>system.getbool(input.enablemouse) + ![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140)]</visible>
+		</control>
+					
+			<control type="label">
+				<animation effect="slide" end="0,-20" time="150" condition="VideoPlayer.Content(LiveTV)">conditional</animation>
+				<left>1025</left>
+				<bottom>15</bottom>
+				<align>center</align>
+				<aligny>center</aligny>
+				<width>300</width>
+				<height>50</height>
+				<font>font10</font>
+				<textcolor>grey2</textcolor>
+				<label>$VAR[OSDHelpTextVar]</label>
+				<shadowcolor>black</shadowcolor>
+				<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(PlayerProcessinfo) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1141) | Window.IsVisible(1142) | VideoPlayer.Content(LiveTV)]</visible>
+			</control>
+			<control type="label">
+				
+				<left>1025</left>
+				<bottom>-10</bottom>
+				<align>center</align>
+				<aligny>center</aligny>
+				<width>300</width>
+				<height>50</height>
+				<font>font6</font>
+				<textcolor>grey2</textcolor>
+				<label>(按"下"键查看剧集和章节(书签))</label>
+				<shadowcolor>black</shadowcolor>
+				<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(PlayerProcessinfo) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1141) | Window.IsVisible(1142) | VideoPlayer.Content(LiveTV)]</visible>
+				<visible>Control.HasFocus(101) | Control.HasFocus(102) | Control.HasFocus(103) | Control.HasFocus(104) | Control.HasFocus(105) | Control.HasFocus(106) | Control.HasFocus(107) | Control.HasFocus(108) | Control.HasFocus(109) | Control.HasFocus(110) | Control.HasFocus(111)</visible>
+			</control>
+			<control type="label">
+				<left>1025</left>
+				<bottom>-10</bottom>
+				<align>center</align>
+				<aligny>center</aligny>
+				<width>300</width>
+				<height>50</height>
+				<font>font6</font>
+				<textcolor>grey2</textcolor>
+				<label>(按"下"键查看信息和演员列表)</label>
+				<shadowcolor>black</shadowcolor>
+				<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(PlayerProcessinfo) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1141) | Window.IsVisible(1142) | VideoPlayer.Content(LiveTV)]</visible>
+				<visible>Control.HasFocus(201) | Control.HasFocus(202) | Control.HasFocus(203) | Control.HasFocus(204) | Control.HasFocus(205) | Control.HasFocus(206) | Control.HasFocus(207) | Control.HasFocus(2001) | Control.HasFocus(2002)</visible>
+			</control>
+		<control type="slider" id="87">
+			<depth>DepthOSD+</depth>
+			<description>Seek Slider</description>
+			<left>645</left>
+			<top>123r</top>
+			<width>1080</width>
+			<height>24</height>
+			<onup>105</onup>
+			<ondown>105</ondown>						
+			<action>seek</action>
+			<texturesliderbar>seekslider2.png</texturesliderbar>
+			<textureslidernib>osd_slider_nibNF.png</textureslidernib>
+			<textureslidernibfocus>osd_slider_nib.png</textureslidernibfocus>
+			<animation effect="fade" time="150">VisibleChange</animation>
+			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | VideoPlayer.Content(LiveTV)]</visible>
+		</control>
+		<control type="grouplist" id="100">
+			<left>488</left>
+			<top>90r</top>
+			<onup>87</onup>
+			<ondown condition="[VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | [VideoPlayer.Content(movies) + !Integer.IsEqual(VideoPlayer.PlaylistLength,1) + !Integer.IsEqual(VideoPlayer.PlaylistLength,0)]]">ActivateWindow(1140)</ondown>
+            <ondown condition="![[VideoPlayer.Content(episodes) | VideoPlayer.Content(livetv) | [VideoPlayer.Content(movies) + !Integer.IsEqual(VideoPlayer.PlaylistLength,1) + !Integer.IsEqual(VideoPlayer.PlaylistLength,0)]]]">ActivateWindow(videobookmarks)</ondown>
+			<onleft>2002</onleft>
+			<onright>201</onright>
+			<orientation>horizontal</orientation>
+			<itemgap>0</itemgap>
+			<animation effect="fade" time="150">VisibleChange</animation>
+			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+			<control type="button" id="101">
+				<width>83</width>
+				<height>83</height>
+				<label>210</label>
+				<font />
+				<texturefocus>OSDChannelUPFO.png</texturefocus>
+				<texturenofocus>OSDChannelUPNF.png</texturenofocus>
+				<onclick>PlayerControl(Previous)</onclick>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="button" id="102">
+				<width>83</width>
+				<height>83</height>
+				<label>209</label>
+				<font />
+				<texturefocus>OSDChannelDownFO.png</texturefocus>
+				<texturenofocus>OSDChannelDownNF.png</texturenofocus>
+				<onclick>PlayerControl(Next)</onclick>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="button" id="103">
+				<width>83</width>
+				<height>83</height>
+				<label>210</label>
+				<font />
+				<texturefocus>OSDPrevTrackFO.png</texturefocus>
+				<texturenofocus>OSDPrevTrackNF.png</texturenofocus>
+				<onclick>PlayerControl(Previous)</onclick>
+				<visible>!VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="button" id="104">
+				<width>83</width>
+				<height>83</height>
+				<label>31354</label>
+				<font />
+				<texturefocus>OSDRewindFO.png</texturefocus>
+				<texturenofocus>OSDRewindNF.png</texturenofocus>
+				<enable>Player.SeekEnabled</enable>
+				<animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
+				<onclick>PlayerControl(Rewind)</onclick>
+			</control>
+			<control type="togglebutton" id="105">
+				<width>83</width>
+				<height>83</height>
+				<label>31351</label>
+				<altlabel>208</altlabel>
+				<font />
+				<texturefocus>OSDPauseFO.png</texturefocus>
+				<texturenofocus>OSDPauseNF.png</texturenofocus>
+				<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+				<alttexturefocus>OSDPlayFO.png</alttexturefocus>
+				<alttexturenofocus>OSDPlayNF.png</alttexturenofocus>
+				<onclick>PlayerControl(Play)</onclick>
+				<enable>Player.PauseEnabled</enable>
+				<animation effect="fade" start="100" end="50" time="75" condition="!Player.PauseEnabled">Conditional</animation>
+			</control>
+			<control type="button" id="106">
+				<width>83</width>
+				<height>83</height>
+				<label>31352</label>
+				<font />
+				<texturefocus>OSDStopFO.png</texturefocus>
+				<texturenofocus>OSDStopNF.png</texturenofocus>
+				<onclick>PlayerControl(Stop)</onclick>
+			</control>
+			<control type="button" id="107">
+				<width>83</width>
+				<height>83</height>
+				<label>31353</label>
+				<font />
+				<texturefocus>OSDForwardFO.png</texturefocus>
+				<texturenofocus>OSDForwardNF.png</texturenofocus>
+				<enable>Player.SeekEnabled</enable>
+				<animation effect="fade" start="100" end="50" time="75" condition="!Player.SeekEnabled">Conditional</animation>
+				<onclick>PlayerControl(Forward)</onclick>
+			</control>
+			<control type="button" id="108">
+				<width>83</width>
+				<height>83</height>
+				<label>209</label>
+				<font />
+				<texturefocus>OSDNextTrackFO.png</texturefocus>
+				<texturenofocus>OSDNextTrackNF.png</texturenofocus>
+				<onclick>PlayerControl(Next)</onclick>
+				<visible>!VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="togglebutton" id="109">
+				<width>83</width>
+				<height>83</height>
+				<label>264</label>
+				<altlabel>265</altlabel>
+				<font />
+				<texturefocus>OSDRecordOffFO.png</texturefocus>
+				<texturenofocus>OSDRecordOffNF.png</texturenofocus>
+				<usealttexture>PVR.IsRecordingPlayingChannel | PVR.IsPlayingActiveRecording</usealttexture>
+				<alttexturefocus>OSDRecordOnFO.png</alttexturefocus>
+				<alttexturenofocus>OSDRecordOnNF.png</alttexturenofocus>
+				<onclick>PVR.ToggleRecordPlayingChannel</onclick>
+				<enable>PVR.CanRecordPlayingChannel</enable>
+				<animation effect="fade" start="100" end="50" time="75" condition="!PVR.CanRecordPlayingChannel">Conditional</animation>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="button" id="110">
+				<width>83</width>
+				<height>83</height>
+				<label>19019</label>
+				<font />
+				<texturefocus>OSDChannelListFO.png</texturefocus>
+				<texturenofocus>OSDChannelListNF.png</texturenofocus>
+				<onclick>ActivateWindow(PVROSDChannels)</onclick>
+				<onclick>Dialog.Close(VideoOSD)</onclick>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+			<control type="button" id="111">
+				<width>83</width>
+				<height>83</height>
+				<label>$LOCALIZE[19029]$INFO[VideoPlayer.ChannelName, - ]</label>
+				<font />
+				<texturefocus>OSDepgFO.png</texturefocus>
+				<texturenofocus>OSDepgNF.png</texturenofocus>
+				<onclick>ActivateWindow(PVRChannelGuide)</onclick>
+				<onclick>Dialog.Close(VideoOSD)</onclick>
+				<visible>VideoPlayer.Content(LiveTV)</visible>
+			</control>
+		</control>
+		<control type="grouplist" id="200">
+			<right>20</right>
+			<top>90r</top>
+			<onup>87</onup>
+			<ondown>ActivateWindow(1142)</ondown>
+            
+			<onleft>111</onleft>
+			<onright>101</onright>
+			<orientation>horizontal</orientation>
+			<align>right</align>
+			<itemgap>0</itemgap>
+			<animation effect="fade" time="150">VisibleChange</animation>
+			<visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+
+			
+			<control type="button" id="201">
+				<enable>VideoPlayer.IsStereoscopic</enable>
+				<animation effect="fade" start="100" end="0" time="75" condition="!VideoPlayer.IsStereoscopic">Conditional</animation>
+				<width>83</width>
+				<height>83</height>
+				<label>36501</label>
+				<font />
+				<texturefocus>OSDStereoscopicFO.png</texturefocus>
+				<texturenofocus>OSDStereoscopicNF.png</texturenofocus>
+				<onclick>SetProperty(optionsdialog_content,3d,home)</onclick>
+				<onclick>SetProperty(optionsdialog_header,$LOCALIZE[36501],home)</onclick>
+				<onclick>ActivateWindow(1114)</onclick>
+<!--				<onup>501</onup> -->
+			</control>
+			<control type="button" id="2001">
+				<width>83</width>
+				<height>83</height>
+				<label>Playerprocessinfo</label>
+				<font />
+				<texturefocus>osdppinfof.png</texturefocus>
+				<texturenofocus>osdppinfo.png</texturenofocus>
+				<onclick>ActivateWindow(playerprocessinfo)</onclick>
+			</control>
+			<!--control type="button" id="205">
+				<width>83</width>
+				<height>83</height>
+				<label>298</label>
+				<font />
+				<texturefocus>OSDBookmarksFO.png</texturefocus>
+				<texturenofocus>OSDBookmarksNF.png</texturenofocus>
+				<onclick>ActivateWindow(VideoBookmarks)</onclick>
+				<visible>!VideoPlayer.Content(LiveTV)</visible>
+			</control-->
+			
+			<control type="button" id="202">
+				<width>83</width>
+				<height>83</height>
+				<label>31356</label>
+				<font />
+				<texturefocus>OSDSubtitlesFO.png</texturefocus>
+				<texturenofocus>OSDSubtitlesNF.png</texturenofocus>
+				<onup>2021</onup>
+				<onclick>ActivateWindow(OSDSubtitleSettings)</onclick>
+			</control>
+			<control type="button" id="204">
+				<width>83</width>
+				<height>83</height>
+				<label>13396</label>
+				<onup>2041</onup>
+				<font />
+				<texturefocus>OSDAudioFO.png</texturefocus>
+				<texturenofocus>OSDAudioNF.png</texturenofocus>
+				<onclick>ActivateWindow(OSDAudioSettings)</onclick>
+			</control>
+			<control type="button" id="207">
+				<width>83</width>
+				<height>83</height>
+				<label>31967</label>
+				<font/>
+				<onup>11100</onup>
+				<texturefocus>OSDPresetSettingsFO.png</texturefocus>
+				<texturenofocus>OSDPresetSettingsNF.png</texturenofocus>
+				<onclick>SetProperty(optionsdialog_content,options,home)</onclick>
+				<onclick>SetProperty(optionsdialog_header,$LOCALIZE[31967],home)</onclick>
+				<onclick>ActivateWindow(1114)</onclick>
+			</control>
+			<control type="button" id="203">
+				<width>83</width>
+				<height>83</height>
+				<label>13395</label>
+				<font />
+				<texturefocus>OSDVideoFO.png</texturefocus>
+				<texturenofocus>OSDVideoNF.png</texturenofocus>
+				<onclick>ActivateWindow(OSDVideoSettings)</onclick>
+			</control>
+			<control type="button" id="206">
+				<width>83</width>
+				<height>83</height>
+				<label>31355</label>
+				<font />
+				<texturefocus>OSDDvdFO.png</texturefocus>
+				<texturenofocus>OSDDvdNF.png</texturenofocus>
+				<onclick>PlayerControl(ShowVideoMenu)</onclick>
+				<visible>!VideoPlayer.Content(LiveTV) + VideoPlayer.HasMenu</visible>
+			</control>
+			<control type="button" id="2002">
+				<width>83</width>
+				<height>83</height>
+				<label>显示调试信息</label>
+				<font />
+				<texturefocus>osddebugfo.png</texturefocus>
+				<texturenofocus>osddebugnf.png</texturenofocus>
+				<onclick>playerdebug</onclick>
+			</control>
+		</control>
+		<control type="group">
+		        <include>Animation_SlideIn_Dialog</include>
+                <depth>DepthMax</depth>
+                <right>0</right>
+                <width>640</width>
+                <bottom>140</bottom>
+                <height>520</height>
+                <control type="group">
+                    <animation effect="slide" start="0" end="0,60" condition="Integer.IsEqual(Container(2021).NumItems,6)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,120" condition="Integer.IsEqual(Container(2021).NumItems,5)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,180" condition="Integer.IsEqual(Container(2021).NumItems,4)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,240" condition="Integer.IsEqual(Container(2021).NumItems,3)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,300" condition="Integer.IsEqual(Container(2021).NumItems,2)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,360" condition="Integer.IsLess(Container(2021).NumItems,2)">Conditional</animation>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>520</height>
+						  <visible>Integer.IsGreater(Container(2021).NumItems,6)</visible>
+                    </control>
+					 <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>460</height>
+                          <visible>Integer.IsEqual(Container(2021).NumItems,6)</visible>
+                    </control>	
+                     <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>400</height>
+                          <visible>Integer.IsEqual(Container(2021).NumItems,5)</visible>
+                    </control>	   
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>340</height>
+                          <visible>Integer.IsEqual(Container(2021).NumItems,4)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						 <height>280</height>
+                        <visible>Integer.IsEqual(Container(2021).NumItems,3)</visible>
+                    </control>
+                   <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>220</height>
+                        <visible>Integer.IsEqual(Container(2021).NumItems,2)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>160</height>
+                        <visible>Integer.IsLess(Container(2021).NumItems,2)</visible>
+                    </control> 
+					<control type="group" id="20211">
+                     <nested />
+                     <height>120</height>
+                     <control type="label">
+                     <label>$LOCALIZE[287]</label>
+					 <top>-20</top>
+					 <left>-10</left>
+                     <textoffsetx>30</textoffsetx>
+                     <font>font13</font>
+                     <aligny>center</aligny>
+                    <textcolor>ff35e55e</textcolor>
+                </control>               
+				  
+                    <control type="image">
+					 <top>10</top>
+					 <left>490</left>
+					 <height>50</height>
+                    <width>128</width>
+                        <bordersize>0</bordersize>
+                        <texture>confluence_logo.png</texture>
+                    </control>
+					 <control type="image">
+                    <top>70</top>
+                    <height>1</height>
+                    <left>20</left>
+                    <right>20</right>
+                    <texture colordiffuse="white">common/white.png</texture>
+                </control>
+				   </control>
+				<control type="panel" id="2021">
+                        <top>80</top>
+                        <left>0</left>
+                        <ondown>202</ondown>
+                        <onleft>202</onleft>
+                        <onright>202</onright>
+                        <onup>2021</onup>
+               <itemlayout height="60">
+                            <control type="group">
+							<top>20</top>
+                            <left>20</left>
+                          <right>20</right>
+                           <control type="label">
+						   <font>font11</font>
+                           <textcolor>white</textcolor>
+                          <label>$VAR[Label_StreamLanguage,[UPPERCASE],[/UPPERCASE]]$INFO[ListItem.Label2, [COLOR ff35e55e]|[/COLOR] ,]</label>
+                        </control>
+               <control type="label">
+                    <left>340</left>
+					<top>3</top>
+                    <align>right</align>
+					<width>108</width>
+                    <label>$VAR[Label_PlayerStream_IsForced,  ,]$VAR[Label_PlayerStream_IsDefault,  ,]$VAR[Label_PlayerStream_IsOriginal,  ,]$INFO[ListItem.Property(codec),  ,]$INFO[ListItem.Property(channels),  , $LOCALIZE[10127]]$INFO[ListItem.Property(bitrate),  , bps]</label>
+                    <font>font10</font>
+                    <textcolor>white</textcolor>
+                </control>
+              <control type="image">
+                    <left>430</left>
+                    <top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">subtitles/icon_close_caption.png</texture>
+                    <animation effect="fade" end="33" condition="String.IsEmpty(ListItem.Property(isimpaired))">Conditional</animation>
+                </control>
+
+                <control type="image">
+                    <left>470</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="FFFFA500">$VAR[Image_IsCurrentStream]</texture>
+                    <visible>VideoPlayer.SubtitlesEnabled</visible>
+                </control>
+                <control type="image">
+                     <left>470</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">common/check-off.png</texture>
+                    <visible>!VideoPlayer.SubtitlesEnabled</visible>
+                </control>
+
+                <control type="image">
+                    <left>545</left>
+					<top>-18</top>
+                    <width>70</width>
+					<height>70</height>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">strech</aspectratio>
+                    <texture>$INFO[ListItem.Property(language),flagging/color/language/,.png]</texture>
+					
+                </control>
+            </control>
+            </itemlayout>
+              <focusedlayout height="60">
+                  <control type="group">
+				          <top>20</top>
+                            <left>20</left>
+                          <right>20</right>
+                           <control type="label">
+						   <font>font11</font>
+                           <textcolor>blue</textcolor>
+                          <label>$VAR[Label_StreamLanguage,[UPPERCASE],[/UPPERCASE]]$INFO[ListItem.Label2, [COLOR ff35e55e]|[/COLOR] ,]</label>
+                        </control>
+                <control type="label">
+                    <left>340</left>
+					<top>3</top>
+                    <align>right</align>
+					<width>108</width>
+                    <label>$VAR[Label_PlayerStream_IsForced,  ,]$VAR[Label_PlayerStream_IsDefault,  ,]$VAR[Label_PlayerStream_IsOriginal,  ,]$INFO[ListItem.Property(codec),  ,]$INFO[ListItem.Property(channels),  , $LOCALIZE[10127]]$INFO[ListItem.Property(bitrate),  , bps]</label>
+                    <font>font10</font>
+                    <textcolor>blue</textcolor>
+                </control>
+
+                <control type="image">
+                    <left>430</left>
+                    <top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">subtitles/icon_close_caption.png</texture>
+                    <animation effect="fade" end="33" condition="String.IsEmpty(ListItem.Property(isimpaired))">Conditional</animation>
+                </control>
+
+                <control type="image">
+                    <left>470</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="blue">$VAR[Image_IsCurrentStream]</texture>
+                    <visible>VideoPlayer.SubtitlesEnabled</visible>
+                </control>
+                <control type="image">
+                     <left>470</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="blue">common/check-off.png</texture>
+                    <visible>!VideoPlayer.SubtitlesEnabled</visible>
+                </control>
+
+                <control type="image">
+                    <left>545</left>
+					<top>-18</top>
+                    <width>70</width>
+					<height>70</height>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">strech</aspectratio>
+                    <texture>$INFO[ListItem.Property(language),flagging/color/language/,.png]</texture>
+					
+                </control>
+				<control type="image">
+						<left>10</left>
+						<top>-15</top>
+						<width>630</width>
+						<height>60</height>
+						<texture border="0,2,0,2">MenuItemFO.png</texture>
+						<visible>Control.HasFocus(2021)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+            </control>
+             </focusedlayout>
+                        <content>plugin://script.skinvariables?info=get_player_streams&amp;stream_type=subtitle&amp;reload=$INFO[Window.Property(UID)]</content>
+                        <onclick condition="true + !String.IsEmpty(ListItem.Property(iscurrent))">Action(ShowSubtitles)</onclick>
+                        <onclick condition="![true + !String.IsEmpty(ListItem.Property(iscurrent))]">Runscript(script.skinvariables,set_player_subtitle=$INFO[ListItem.Property(index)],reload_property=UID)</onclick>
+
+                    </control>
+				</control>
+                <control type="image">
+                     <top>518</top>
+                    <left>235</left>
+                    <height>65</height>
+                    <width>25</width>
+                    <texture colordiffuse="ff282a2e" flipy="true">common/arrow-menu-up.png</texture>
+                </control>
+             <visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+			 <visible>!Window.IsVisible(DialogSettings.xml)</visible>
+             <visible>Control.HasFocus(202) | Control.HasFocus(2021)</visible>
+             <visible>!Integer.IsEqual(Container(2021).NumItems,0) | Container(2021).IsUpdating</visible>
+             <animation effect="fade" start="100" end="0" condition="Integer.IsEqual(Container(2021).NumItems,0)">Conditional</animation>
+			 </control>	
+			 <control type="group">
+		        <include>Animation_SlideIn_Dialog</include>
+                <depth>DepthMax</depth>
+                <right>0</right>
+                <width>1040</width>
+                 <bottom>140</bottom>
+                <height>520</height>
+                <control type="group">
+                    <animation effect="slide" start="0" end="0,60" condition="Integer.IsEqual(Container(2041).NumItems,6)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,120" condition="Integer.IsEqual(Container(2041).NumItems,5)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,180" condition="Integer.IsEqual(Container(2041).NumItems,4)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,240" condition="Integer.IsEqual(Container(2041).NumItems,3)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,300" condition="Integer.IsEqual(Container(2041).NumItems,2)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,360" condition="Integer.IsLess(Container(2041).NumItems,2)">Conditional</animation>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>520</height>
+						  <visible>Integer.IsGreater(Container(2041).NumItems,6)</visible>
+                    </control>
+					 <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>460</height>
+                          <visible>Integer.IsEqual(Container(2041).NumItems,6)</visible>
+                    </control>	
+                     <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>400</height>
+                          <visible>Integer.IsEqual(Container(2041).NumItems,5)</visible>
+                    </control>	   
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>340</height>
+                          <visible>Integer.IsEqual(Container(2041).NumItems,4)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						 <height>280</height>
+                        <visible>Integer.IsEqual(Container(2041).NumItems,3)</visible>
+                    </control>
+                   <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>220</height>
+                        <visible>Integer.IsEqual(Container(2041).NumItems,2)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>160</height>
+                        <visible>Integer.IsLess(Container(2041).NumItems,2)</visible>
+                    </control> 
+					<control type="group" id="20211">
+                     <nested />
+                     <height>120</height>
+                     <control type="label">
+                     <label>音轨</label>
+					 <top>-30</top>
+					 <left>-10</left>
+                     <textoffsetx>30</textoffsetx>
+                     <font>font13</font>
+                     <aligny>center</aligny>
+                    <textcolor>ffb635e5</textcolor>
+                </control>               
+				  
+                    <control type="image">
+					 <top>10</top>
+					 <left>890</left>
+					 <height>50</height>
+                    <width>128</width>
+                        <bordersize>0</bordersize>
+                        <texture>confluence_logo.png</texture>
+                    </control>
+					 <control type="image">
+                    <top>70</top>
+                    <height>1</height>
+                    <left>20</left>
+                    <right>20</right>
+                    <texture colordiffuse="white">common/white.png</texture>
+                </control>
+                   
+				   </control>
+				<control type="panel" id="2041">
+                        <top>80</top>
+                        <left>0</left>
+                        <ondown>204</ondown>
+                        <onleft>204</onleft>
+                        <onright>204</onright>
+                        <onup>2041</onup>
+               <itemlayout height="60">
+                           <control type="group">
+				          <top>20</top>
+                            <left>20</left>
+                          <right>20</right>
+                           <control type="label">
+						   <font>font11</font>
+                           <textcolor>white</textcolor>
+                          <label>$VAR[Label_StreamLanguage,[UPPERCASE],[/UPPERCASE]]$INFO[ListItem.Label2, [COLOR ff35e55e]|[/COLOR] ,]</label>
+                        </control>
+                <control type="label">
+                    <left>340</left>
+					<top>3</top>
+                    <align>right</align>
+					<width>500</width>
+                    <label>$VAR[Label_PlayerStream_IsForced,  ,]$VAR[Label_PlayerStream_IsDefault,  ,]$VAR[Label_PlayerStream_IsOriginal,  ,]$INFO[ListItem.Property(codec),  ,]$INFO[ListItem.Property(channels),  , $LOCALIZE[10127]]$INFO[ListItem.Property(bitrate),  , bps]</label>
+                    <font>font10</font>
+                    <textcolor>white</textcolor>
+                </control>
+
+                <control type="image">
+                    <left>830</left>
+                    <top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">subtitles/icon_close_caption.png</texture>
+                    <animation effect="fade" end="33" condition="String.IsEmpty(ListItem.Property(isimpaired))">Conditional</animation>
+                </control>
+
+                <control type="image">
+                    <left>870</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="FFFFA500">$VAR[Image_IsCurrentStream]</texture>
+                    <visible>true</visible>
+                </control>
+                <control type="image">
+                     <left>870</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">common/check-off.png</texture>
+                    <visible>!true</visible>
+                </control>
+
+                <control type="image">
+                    <left>945</left>
+					<top>-18</top>
+                    <width>70</width>
+					<height>70</height>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">strech</aspectratio>
+                    <texture>$INFO[ListItem.Property(language),flagging/color/language/,.png]</texture>
+					
+                </control>
+            </control>
+            </itemlayout>
+              <focusedlayout height="60">
+                  <control type="group">
+				          <top>20</top>
+                            <left>20</left>
+                          <right>20</right>
+                           <control type="label">
+						   <font>font11</font>
+                           <textcolor>blue</textcolor>
+                          <label>$VAR[Label_StreamLanguage,[UPPERCASE],[/UPPERCASE]]$INFO[ListItem.Label2, [COLOR ff35e55e]|[/COLOR] ,]</label>
+                        </control>
+                <control type="label">
+                    <left>340</left>
+					<top>3</top>
+                    <align>right</align>
+					<width>500</width>
+                    <label>$VAR[Label_PlayerStream_IsForced,  ,]$VAR[Label_PlayerStream_IsDefault,  ,]$VAR[Label_PlayerStream_IsOriginal,  ,]$INFO[ListItem.Property(codec),  ,]$INFO[ListItem.Property(channels),  , $LOCALIZE[10127]]$INFO[ListItem.Property(bitrate),  , bps]</label>
+                    <font>font10</font>
+                    <textcolor>blue</textcolor>
+                </control>
+
+                <control type="image">
+                    <left>830</left>
+                    <top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="white">subtitles/icon_close_caption.png</texture>
+                    <animation effect="fade" end="33" condition="String.IsEmpty(ListItem.Property(isimpaired))">Conditional</animation>
+                </control>
+
+                <control type="image">
+                    <left>870</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="blue">$VAR[Image_IsCurrentStream]</texture>
+                    <visible>true</visible>
+                </control>
+                <control type="image">
+                     <left>870</left>
+					<top>-10</top>
+                    <width>80</width>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="blue">common/check-off.png</texture>
+                    <visible>!true</visible>
+                </control>
+
+                <control type="image">
+                    <left>945</left>
+					<top>-18</top>
+                    <width>70</width>
+					<height>70</height>
+                    <bordersize>15</bordersize>
+                    <aspectratio align="right">strech</aspectratio>
+                    <texture>$INFO[ListItem.Property(language),flagging/color/language/,.png]</texture>
+					
+                </control>
+				<control type="image">
+						<left>10</left>
+						<top>-15</top>
+						<width>1030</width>
+						<height>60</height>
+						<texture border="0,2,0,2">MenuItemFO.png</texture>
+						<visible>Control.HasFocus(2041)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+            </control>
+             </focusedlayout>
+                        <content>plugin://script.skinvariables?info=get_player_streams&amp;stream_type=audio&amp;reload=$INFO[Window.Property(UID)]</content>
+                        <onclick condition="false + !String.IsEmpty(ListItem.Property(iscurrent))">Action(ShowSubtitles)</onclick>
+                        <onclick condition="![false + !String.IsEmpty(ListItem.Property(iscurrent))]">Runscript(script.skinvariables,set_player_audiostream=$INFO[ListItem.Property(index)],reload_property=UID)</onclick>
+
+                    </control>
+				</control>
+                <control type="image">
+                    <top>518</top>
+                    <left>715</left>
+                    <height>65</height>
+                    <width>25</width>
+                    <texture colordiffuse="ff282a2e" flipy="true">common/arrow-menu-up.png</texture>
+                </control>
+             <visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+			 <visible>!Window.IsVisible(DialogSettings.xml)</visible>
+             <visible>Control.HasFocus(204) | Control.HasFocus(2041)</visible>
+             <visible>!Integer.IsEqual(Container(2041).NumItems,0) | Container(2041).IsUpdating</visible>
+             <animation effect="fade" start="100" end="0" condition="Integer.IsEqual(Container(2041).NumItems,0)">Conditional</animation>
+			 </control>
+	<control type="group">
+		        <include>Animation_SlideIn_Dialog</include>
+                <depth>DepthMax</depth>
+                <right>0</right>
+                <width>640</width>
+                <bottom>140</bottom>
+                <height>520</height>
+                <control type="group">
+                    <animation effect="slide" start="0" end="0,180" condition="Integer.IsEqual(Container(11100).NumItems,4)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,240" condition="Integer.IsEqual(Container(11100).NumItems,3)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,300" condition="Integer.IsEqual(Container(11100).NumItems,2)">Conditional</animation>
+                    <animation effect="slide" start="0" end="0,360" condition="Integer.IsLess(Container(11100).NumItems,2)">Conditional</animation>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>340</height>
+                          <visible>Integer.IsEqual(Container(11100).NumItems,4)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						 <height>280</height>
+                        <visible>Integer.IsEqual(Container(11100).NumItems,3)</visible>
+                    </control>
+                   <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>220</height>
+                        <visible>Integer.IsEqual(Container(11100).NumItems,2)</visible>
+                    </control>
+                    <control type="image">
+                          <texture border="16" colordiffuse="ff282a2e">common/dialog.png</texture>
+						  <height>160</height>
+                        <visible>Integer.IsLess(Container(11100).NumItems,2)</visible>
+                    </control> 
+					<control type="group" id="20211">
+                     <nested />
+                     <height>120</height>
+                     <control type="label">
+                     <label>VS10转换</label>
+					 <font>font14</font>
+					 <top>-40</top>
+					 <left>-10</left>
+                     <textoffsetx>30</textoffsetx>
+                     <aligny>center</aligny>
+                    <textcolor>ffFFA500</textcolor>
+                </control> 
+                    <control type="image">
+					 <top>10</top>
+					 <left>490</left>
+					 <height>50</height>
+                    <width>128</width>
+                        <bordersize>0</bordersize>
+                        <texture>confluence_logo.png</texture>
+                    </control>
+					 <control type="image">
+                    <top>70</top>
+                    <height>1</height>
+                    <left>20</left>
+                    <right>20</right>
+                    <texture colordiffuse="white">common/white.png</texture>
+                </control>
+				   </control>
+				<control type="grouplist" id="11100">
+				<animation effect="fade" time="150">VisibleChange</animation>
+				<left>20</left>
+				<top>80</top>
+				<width>640</width>
+				<itemgap>0</itemgap>
+				<onleft>207</onleft>
+                <onright>207</onright>
+				<onup>11100</onup>
+				<ondown>207</ondown>
+				<orientation>vertical</orientation>
+				<control type="button" id="1110200">
+					<height>60</height>
+					<width>1095</width>
+					<label>影片源格式</label>
+					 <font>font14</font>
+					<focusedcolor>blue</focusedcolor>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.original)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<!--onclick>Close</onclick-->
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110201">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; SDR</label>
+					 <font>font14</font>
+					<focusedcolor>blue</focusedcolor>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.sdr)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),HDR10) | String.Contains(Player.Process(video.source.hdr.type),Dolby Vision) | String.Contains(Player.Process(video.source.hdr.type),HLG)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110202">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; HDR10</label>
+					 <font>font14</font>
+					<focusedcolor>blue</focusedcolor>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.hdr10)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),SDR) | String.Contains(Player.Process(video.source.hdr.type),Dolby Vision)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+				<control type="button" id="1110203">
+					<height>60</height>
+					<width>1095</width>
+					<label>$INFO[Player.Process(video.source.hdr.type)] -&gt; Dolby Vision</label>
+					 <font>font14</font>
+					<focusedcolor>blue</focusedcolor>
+					<texturefocus border="5">button-focus2.png</texturefocus>
+					<onclick>Action(vs10.dv)</onclick>
+					<visible>!String.IsEqual(Player.Process(video.source.hdr.type.raw), 2)</visible>
+					<visible>String.Contains(Player.Process(video.source.hdr.type),SDR) | String.Contains(Player.Process(video.source.hdr.type),HDR10) | String.Contains(Player.Process(video.source.hdr.type),HLG)</visible>
+                    <onclick>Dialog.Close(all)</onclick>
+				</control>
+			</control>
+				</control>
+				 <control type="image">
+                     <top>518</top>
+                    <left>398</left>
+                    <height>65</height>
+                    <width>25</width>
+                    <texture colordiffuse="ff282a2e" flipy="true">common/arrow-menu-up.png</texture>
+                </control>
+             <visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+			 <visible>!Window.IsVisible(DialogSettings.xml)</visible>
+             <visible>Control.HasFocus(207) | ControlGroup(11100).HasFocus</visible>
+             <visible>!Integer.IsEqual(Container(11100).NumItems,0) | Container(11100).IsUpdating</visible>
+             <animation effect="fade" start="100" end="0" condition="Integer.IsEqual(Container(11100).NumItems,0)">Conditional</animation>
+			 </control>	
+		<control type="group">
+		     <include>Animation_SlideIn_Dialog</include>
+		     <visible>![Window.IsVisible(SliderDialog) | Window.IsVisible(OSDSubtitleSettings) | Window.IsVisible(OSDVideoSettings) | Window.IsVisible(OSDAudioSettings) | Window.IsVisible(VideoBookmarks) | Window.IsVisible(1140) | Window.IsVisible(1142) | Window.IsVisible(PVROSDChannels) | Window.IsVisible(PVRChannelGuide)]</visible>
+			 <visible>!Window.IsVisible(DialogSettings.xml)</visible>
+             <visible>Control.HasFocus(2001)</visible>
+	       <include>playerprocessInfo</include>
+	    </control>
+	</controls>
+</window>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<timers>
+    <timer>
+        <name>autoclosevideoosd</name>
+        <description>Timer to auto close the video OSD (if enabled in the skin settings)</description>
+        <start reset="true">Window.IsActive(videoosd) + Skin.HasSetting(OSDAutoClose) + !String.IsEqual(window(home).Property(settingslist_content),osd) + !Window.IsActive(osdsubtitlesettings) + !Window.IsActive(osdaudiosettings) + !Window.IsActive(osdvideosettings) + !Window.IsActive(OSDCMSSettings)</start>
+        <reset>Window.IsActive(videoosd) + !System.IdleTime(1) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd), 1) | String.IsEqual(window(home).Property(settingslist_content),osd) | Window.IsActive(osdsubtitlesettings) | Window.IsActive(osdaudiosettings) | Window.IsActive(osdvideosettings) | Window.IsActive(OSDCMSSettings)</reset>
+        <stop>!Window.IsActive(videoosd) | String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd), 4) | !String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autoclosevideoosd),Skin.Numeric(OSDAutoCloseTime))</stop>
+        <onstop>Dialog.Close(videoosd)</onstop>
+    </timer>
+	<timer>
+        <name>autovideosdr</name>
+        <start>Player.Playing + Skin.HasSetting(autovideotosdr) + !String.Contains(Player.Process(video.source.hdr.type),SDR)</start>
+        <stop>!String.Contains(Player.Process(video.source.hdr.type),SDR) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(autovideosdr), 1)</stop>
+        <onstop>Action(vs10.sdr)</onstop>
+    </timer>
+	<timer>
+        <name>1144autoclose</name>
+        <start reset="true">Window.IsActive(1144) + Skin.HasSetting(OSDAutoClose) + !Window.IsActive(osdsubtitlesettings) + !Window.IsActive(osdaudiosettings) + !Window.IsActive(osdvideosettings) + !Window.IsActive(OSDCMSSettings)</start>
+		<reset>Window.IsActive(1144) + !System.IdleTime(1) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1144autoclose), 1) | Window.IsActive(osdsubtitlesettings) | Window.IsActive(osdaudiosettings) | Window.IsActive(osdvideosettings) | Window.IsActive(OSDCMSSettings)</reset>
+        <stop>!Window.IsActive(1144) | String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1144autoclose), 4) | !String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1144autoclose),Skin.Numeric(OSDAutoCloseTime))</stop>
+        <onstop>Dialog.Close(1144)</onstop>
+    </timer>
+	<timer>
+        <name>1145autoclose</name>
+        <start reset="true">Window.IsActive(1145) + Skin.HasSetting(OSDAutoClose) + !Window.IsActive(osdsubtitlesettings) + !Window.IsActive(osdaudiosettings) + !Window.IsActive(osdvideosettings) + !Window.IsActive(OSDCMSSettings)</start>
+		<reset>Window.IsActive(1145) + !System.IdleTime(1) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1145autoclose), 1) | Window.IsActive(osdsubtitlesettings) | Window.IsActive(osdaudiosettings) | Window.IsActive(osdvideosettings) | Window.IsActive(OSDCMSSettings)</reset>
+        <stop>!Window.IsActive(1145) | String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1145autoclose), 4) | !String.IsEmpty(Skin.String(OSDAutoCloseTime)) + Integer.IsGreaterOrEqual(Skin.TimerElapsedSecs(1145autoclose),Skin.Numeric(OSDAutoCloseTime))</stop>
+        <onstop>Dialog.Close(1145)</onstop>
+    </timer>
+</timers>
