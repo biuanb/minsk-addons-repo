@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="skin.confluence.minsk" version="5.1.1" name="Confluence-明斯克" provider-name="Minsk, CE使用交流群">
+<addon id="skin.confluence.明斯克" version="5.1.1" name="Confluence-明斯克" provider-name="Minsk, CE使用交流群">
 	<requires>
 		<import addon="xbmc.gui" version="5.17.0"/>
 	</requires>
